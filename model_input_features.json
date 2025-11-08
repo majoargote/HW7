@@ -1,0 +1,178 @@
+{
+  "description": "Input features required for diabetes mellitus prediction",
+  "model_options": ["logreg", "rf"],
+  "required_features": [
+    "age",
+    "height",
+    "weight",
+    "aids",
+    "cirrhosis",
+    "hepatic_failure",
+    "immunosuppression",
+    "leukemia",
+    "lymphoma",
+    "solid_tumor_with_metastasis"
+  ],
+  "feature_descriptions": {
+    "age": {
+      "type": "float",
+      "description": "Patient's age in years",
+      "example": 65,
+      "range": "Any positive number"
+    },
+    "height": {
+      "type": "float",
+      "description": "Patient's height in centimeters",
+      "example": 170,
+      "range": "Typically 140-210 cm"
+    },
+    "weight": {
+      "type": "float",
+      "description": "Patient's weight in kilograms",
+      "example": 75,
+      "range": "Typically 40-200 kg"
+    },
+    "aids": {
+      "type": "integer",
+      "description": "Whether patient has AIDS",
+      "example": 0,
+      "values": {
+        "0": "No AIDS",
+        "1": "Has AIDS"
+      }
+    },
+    "cirrhosis": {
+      "type": "integer",
+      "description": "Whether patient has cirrhosis",
+      "example": 0,
+      "values": {
+        "0": "No cirrhosis",
+        "1": "Has cirrhosis"
+      }
+    },
+    "hepatic_failure": {
+      "type": "integer",
+      "description": "Whether patient has hepatic failure",
+      "example": 0,
+      "values": {
+        "0": "No hepatic failure",
+        "1": "Has hepatic failure"
+      }
+    },
+    "immunosuppression": {
+      "type": "integer",
+      "description": "Whether patient has immunosuppression",
+      "example": 0,
+      "values": {
+        "0": "No immunosuppression",
+        "1": "Has immunosuppression"
+      }
+    },
+    "leukemia": {
+      "type": "integer",
+      "description": "Whether patient has leukemia",
+      "example": 0,
+      "values": {
+        "0": "No leukemia",
+        "1": "Has leukemia"
+      }
+    },
+    "lymphoma": {
+      "type": "integer",
+      "description": "Whether patient has lymphoma",
+      "example": 0,
+      "values": {
+        "0": "No lymphoma",
+        "1": "Has lymphoma"
+      }
+    },
+    "solid_tumor_with_metastasis": {
+      "type": "integer",
+      "description": "Whether patient has solid tumor with metastasis",
+      "example": 0,
+      "values": {
+        "0": "No solid tumor with metastasis",
+        "1": "Has solid tumor with metastasis"
+      }
+    }
+  },
+  "example_inputs": [
+    {
+      "patient_type": "Healthy adult male",
+      "age": 45,
+      "height": 175,
+      "weight": 80,
+      "aids": 0,
+      "cirrhosis": 0,
+      "hepatic_failure": 0,
+      "immunosuppression": 0,
+      "leukemia": 0,
+      "lymphoma": 0,
+      "solid_tumor_with_metastasis": 0
+    },
+    {
+      "patient_type": "Elderly patient with cirrhosis",
+      "age": 72,
+      "height": 168,
+      "weight": 65,
+      "aids": 0,
+      "cirrhosis": 1,
+      "hepatic_failure": 0,
+      "immunosuppression": 0,
+      "leukemia": 0,
+      "lymphoma": 0,
+      "solid_tumor_with_metastasis": 0
+    },
+    {
+      "patient_type": "Patient with multiple comorbidities",
+      "age": 68,
+      "height": 170,
+      "weight": 85,
+      "aids": 0,
+      "cirrhosis": 0,
+      "hepatic_failure": 0,
+      "immunosuppression": 1,
+      "leukemia": 0,
+      "lymphoma": 0,
+      "solid_tumor_with_metastasis": 1
+    },
+    {
+      "patient_type": "Young healthy female",
+      "age": 28,
+      "height": 165,
+      "weight": 60,
+      "aids": 0,
+      "cirrhosis": 0,
+      "hepatic_failure": 0,
+      "immunosuppression": 0,
+      "leukemia": 0,
+      "lymphoma": 0,
+      "solid_tumor_with_metastasis": 0
+    }
+  ],
+  "api_usage_example": {
+    "endpoint": "POST /predict/file",
+    "request_body": {
+      "model": "logreg",
+      "data": {
+        "age": 65,
+        "height": 170,
+        "weight": 75,
+        "aids": 0,
+        "cirrhosis": 0,
+        "hepatic_failure": 0,
+        "immunosuppression": 0,
+        "leukemia": 0,
+        "lymphoma": 0,
+        "solid_tumor_with_metastasis": 0
+      }
+    }
+  },
+  "notes": [
+    "All 10 features are REQUIRED for predictions",
+    "Binary features (aids, cirrhosis, etc.) must be 0 or 1",
+    "Age, height, and weight should be realistic values",
+    "Missing features will result in an error",
+    "The model predicts diabetes mellitus (0 = No, 1 = Yes)"
+  ]
+}
