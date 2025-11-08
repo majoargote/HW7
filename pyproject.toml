@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "process_data"
+version = "0.1.0"
+description = "A package to process data"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Elvis Casco" }]
+dependencies = [
+  "geopy>=2.4.1",
+  "numpy>=2.3.4",
+  "pandas>=2.3.3",
+  "pytest>=8.4.2",
+  "scikit-learn>=1.1,<2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "black", "build"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
